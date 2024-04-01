@@ -1,6 +1,8 @@
 ---
+import Headerboton from "./Headerboton.astro"
 console.log("javascript") 
 ---
+
 <header class="py-8 px-4 max-auto max-w-xl lg:py-16 lg:px-6">
     <div class="mx-auto text-center mb-8 lg:mb-16">
         <h2 class="mb-4 text-5xl tracking-tight font-extrabold text-white">
@@ -12,8 +14,9 @@ console.log("javascript")
     </div>
 
     <nav class="flex flex-col items-center justify-between w-full text-center md:flex-row">
-    <a class="text-white" href="/">Ultimos lanzamientoz</a>
-    <a class="text-white" href="/oldest">Los mas viejos</a>
+    <Headerboton class="text-white" href="/">Ultimos lanzamientoz</a>
+    <Headerboton class="text-white" href="/oldest">Los mas viejos</a>
+    <Headerboton class="text-white" href="/">boton nuevo </a>
 
     </nav>
 </header>

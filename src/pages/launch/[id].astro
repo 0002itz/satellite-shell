@@ -1,0 +1,29 @@
+---
+import { getLaunchBy } from "../../services/spacex"
+
+
+
+// const { id } = Astro.params
+
+// console.log({ id })
+
+// let launch
+// if (id) {
+//     launch = await getLaunchBy({ id })
+// }
+
+
+// console.log(launch)
+
+const { id } = Astro.params
+console.log({ id })
+
+let launch 
+if (id) {
+  launch = await getLaunchBy ({ id })
+}
+
+console.log(launch)
+---
+
+<article>{launch?.id}</article>

@@ -26,6 +26,6 @@ export const getLatesLauches = async () => {
             },
         })
     })
-    const { docs: lauches } = await res.json() as APISpaceXResponse
-    return lauches
+    const { docs: launches } = await res.json() as APISpaceXResponse
+    return launches
 }

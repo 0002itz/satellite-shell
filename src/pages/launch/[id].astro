@@ -1,6 +1,6 @@
 ---
+import Layout from "../../layouts/Layout.astro"
 import { getLaunchBy } from "../../services/spacex"
-
 
 const { id } = Astro.params
 console.log({ id })
@@ -10,7 +10,14 @@ if (id) {
   launch = await getLaunchBy ({ id })
 }
 
+export function getStaticPaths() {
+  return [{ params: { id: "5eb87cd9ffd86e000604b32a" } }]
+}
+
 console.log(launch)
 ---
-
-<article>{launch?.id}</article>
+<Layout title={`lunch${id}`}>
+  <article>
+    {launch?.id}
+  </article>
+</Layout>

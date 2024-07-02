@@ -22,4 +22,12 @@ console.log(launch)
 
 ---
 
-<Layout title=`launch${id}`><article>{launch?.id}</article></Layout>
+<Layout title=`launch${id}`>
+    <article>
+        <img class="w-52 h-auto" src={launch?.links?.patch.small} alt={launch?.name}>
+        <h2 class="text-4xl text-white font-blod">
+            Launch #{launch?.flight_number}
+        </h2>
+        <p class="text-lg">{launch?.details}</p>
+    </article>
+</Layout>

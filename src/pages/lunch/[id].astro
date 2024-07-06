@@ -24,10 +24,12 @@ console.log(launch)
 
 <Layout title=`launch${id}`>
     <article>
-        <img class="w-52 h-auto" src={launch?.links?.patch.small} alt={launch?.name}>
-        <h2 class="text-4xl text-white font-blod">
+        <picture class="grid place-content-center">
+            <img class="w-52 h-auto" src={launch?.links?.patch.small} alt={launch?.name}>
+        </picture>
+        <h2 class="flex justify-center text-4xl text-red-600 font-blod">
             Launch #{launch?.flight_number}
         </h2>
-        <p class="text-lg">{launch?.details}</p>
+        <p class="flex justify-center text-lg">{launch?.details}</p>
     </article>
 </Layout>

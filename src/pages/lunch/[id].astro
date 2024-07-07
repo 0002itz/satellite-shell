@@ -4,7 +4,6 @@ import Layout from "../../layouts/Layout.astro"
 import { getLaunchBy } from "../../services/spacex"
 import { getLatesLauches } from "../../services/spacex"
 const { id } = Astro.params
-console.log({ id })
 
 let launch 
 if (id) {
@@ -17,8 +16,6 @@ export async function getStaticPaths() {
         params : { id: launch.id},
     }))
 }
-
-console.log(launch)
 
 ---
 

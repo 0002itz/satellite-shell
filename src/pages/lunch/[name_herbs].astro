@@ -1,0 +1,18 @@
+---
+// import type { GetStaticPaths } from "astro";
+import Layout from "../../layouts/Layout.astro"
+import { herbs } from "../../components/Products.astro"
+
+export async function getStaticPaths() {
+
+    return herbs.map((herbs) => ({
+        params : { name_herbs: herbs.name_herbs},
+    }))
+}
+
+const { name_herbs } = Astro.params
+---
+
+<Layout title=`${name_herbs}`>
+    <article> </article>
+</Layout>

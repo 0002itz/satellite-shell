@@ -4,8 +4,10 @@ const Herbs_db = defineTable({
     columns: {
         id: column.number({ primaryKey: true }),
         name_herbs: column.text(),
-        parrafo: column.text(),
-        puntos_clave: column.text(),
+        paragraph: column.text(),
+        key_points: column.text(),
+        available: column.boolean(),
+        // imagePath: column.text()
     }
 })
 

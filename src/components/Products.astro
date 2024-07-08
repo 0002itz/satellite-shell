@@ -1,0 +1,11 @@
+---
+import Cardlauch from './Cardlauch.astro'
+import { db } from "astro:db"
+import { Herbs_db } from 'astro:db'
+
+export const herbs = await db.select().from(Herbs_db)
+---
+
+<div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+  {herbs.map((herb) => <Cardlauch imagePath=`/src/assets/${herb.name_herbs}.png` herbs={herb} />)}
+</div>

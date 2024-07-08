@@ -1,43 +1,26 @@
 ---
+import { Image } from 'astro:assets';
 interface Props {
-    id: string
-    img: string
-    success: boolean
-    flightNumber: number
-    details: string | null
-
+    herbs:{
+        id: number;
+        name_herbs: string;
+        paragraph: string;
+        key_points: string;
+        available: boolean;
+    };
+    imagePath: string;
 }
 
-const { success, flightNumber, img, id, details } = Astro.props
-const lauchStatus = success ? "Success" : "Failure"
+const { herbs, imagePath } = Astro.props;
+console.log(imagePath)
 ---
 <a 
-    href={`/lunch/${id}`}
+    href={`/lunch/${herbs.name_herbs}`}
     class="rounded-lg border shadow-md bg-yellow-400  border-gray-700
     hover:sacle-105 hover:border-gray-700 hover:border-gray-500 transition flex 
     flex-col"
 >
-    <picture class="flex justify-center p-4">
-        <img class="md-5 rounded.lg" src={img} alt=`Patch for launch ${id}`/>
-    </picture>
+    <Image class="md-5 rounded.lg flex justify-center p-4" src={imagePath} alt=`Patch for launch ${herbs.name_herbs}` width={47} height={55}/>
+    <header class="p-4 flex-grow">{herbs.name_herbs}</header>
 
-    <header class="p-4 flex-grow">
-        <span
-        class:list={[
-            'text-xs font-semibold mr-2 px-2.5 rounded',
-            {
-                "bg-green-400 text-grenn-900": success,
-                "bg-red-400 text-red-900": !success
-            }
-        ]}
-        >{lauchStatus}</span>
-        
-        <h2 class="my-2 text-2xl font-blod tracking-tight text-white">
-            Flight #{flightNumber}
-        </h2>
-    
-        <p class="md-4 font-Light text-gray-400">
-            {details != null && details?. length > 100 ? details.slice(0,100) + "..." : details}
-        </p>
-    </header>
 </a>

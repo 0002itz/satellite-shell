@@ -1,6 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 interface Props {
+    imagePath: string;
     herbs:{
         id: number;
         name_herbs: string;
@@ -8,11 +9,10 @@ interface Props {
         key_points: string;
         available: boolean;
     };
-    imagePath: string;
 }
 
-const { herbs, imagePath } = Astro.props;
-console.log(imagePath)
+
+const { herbs,imagePath } = Astro.props;
 ---
 <a 
     href={`/lunch/${herbs.name_herbs}`}

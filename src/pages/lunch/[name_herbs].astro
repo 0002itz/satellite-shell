@@ -25,6 +25,7 @@ const { Herbs } = Astro.props;
 <Layout title={name_herbs}>
     <Image src={`/src/assets/${name_herbs}.png`} alt={name_herbs} width={47} height={55} />
     <h2>{name_herbs}</h2>
+    <h1>{Herbs.available}</h1>
     <h1>{Herbs.paragraph}</h1>
     <h1>{Herbs.key_points}</h1>
 </Layout>

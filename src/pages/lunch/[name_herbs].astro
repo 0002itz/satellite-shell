@@ -3,26 +3,28 @@
 import Layout from "../../layouts/Layout.astro"
 import { herbs } from "../../components/Products.astro"
 import { Image } from "astro:assets"
+import type { Props } from "astro/components/ViewTransitions.astro";
 export const prerender = true;
 
 // roting dinamico y paso de datos
 export async function getStaticPaths() {
-    return herbs.map((herbs) => {
+    const Herbs = herbs
+    return Herbs.map((herbs) => {
         return {
             params : { name_herbs: herbs.name_herbs},
-            props: { herbs },
+            props: { Herbs: herbs },
         };
     });
 }
 
 const { name_herbs  } = Astro.params;
-const { herbs } = Astro.props;
+const { Herbs } = Astro.props;
 
 ---
 
 <Layout title={name_herbs}>
     <Image src={`/src/assets/${name_herbs}.png`} alt={name_herbs} width={47} height={55} />
     <h2>{name_herbs}</h2>
-    <h1>{herbs.paragraph}</h1>
-    <h1>{herbs.key_points}</h1>
+    <h1>{Herbs.paragraph}</h1>
+    <h1>{Herbs.key_points}</h1>
 </Layout>

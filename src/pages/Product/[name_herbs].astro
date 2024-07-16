@@ -1,0 +1,71 @@
+---
+// import type { GetStaticPaths } from "astro";
+import Layout from "../../layouts/Layout.astro"
+import { herbs } from "../../components/Products.astro"
+import { Image } from 'astro:assets';
+
+import imag_cha from "../../assets/Chaga.png"
+import imag_cor from "../../assets/Cordyceps.png"
+import imag_san from "../../assets/Sananga.png"
+import imag_mel from "../../assets/Melena de León.png"
+
+export const prerender = true;
+import type { InferGetStaticParamsType, InferGetStaticPropsType } from 'astro';
+import Cardlauch from "../../components/Cardlauch.astro";
+import { string } from "astro/zod";
+// roting dinamico y paso de datos
+export async function getStaticPaths() {
+    return herbs.map((herbs) => {
+        return {
+            params : { name_herbs: herbs.name_herbs},
+            props: { 
+                propa: herbs 
+                
+            },
+        };
+    })
+} 
+
+const { name_herbs  } = Astro.params as Params;
+const { propa } = Astro.props;
+const available = propa.available ? "Available" : "Out sock"
+
+type Params = InferGetStaticParamsType<typeof getStaticPaths>;
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+
+---
+<!-- <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+    {herbs_p.map((herb) => <Cardlauch imagePath=`/src/assets/${herbs_p.name_herbs}.jpg` />)}
+</div>  -->
+
+<Layout title={name_herbs}>
+    <a
+    class="rounded-lg border shadow-md bg-yellow-400  border-gray-700
+    hover:sacle-105 hover:border-gray-700 hover:border-gray-500 transition flex 
+    flex-col p-4">
+
+    <article>
+        <picture class="grid place-content-center">
+            <Image class="w-52 h-auto" src=`/src/assets/${name_herbs}.png` alt={name_herbs} width={200} height={200}>
+        </picture>
+    </article>
+
+    <header class="p-4 flex-grow">
+        <h2 class="my-2 text-2xl font-blod tracking-tight text-white">
+            {name_herbs}
+        </h2>
+        <span
+        class:list={[
+            'text-xs font-semibold mr-2 px-2.5',
+            {
+                "bg-green-400 text-grenn-900": available,
+                "bg-red-400 text-red-900": !available
+            }
+        ]}
+        >{available}</span>
+
+        <p class="md-4 font-Light">
+            {propa.paragraph}
+        </p>
+        <h1>{propa.key_points}</h1>
+</Layout>

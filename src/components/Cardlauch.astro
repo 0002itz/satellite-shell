@@ -1,26 +1,42 @@
 ---
 import { Image } from 'astro:assets';
+
 interface Props {
     imagePath: string;
-    herbs:{
+    herbs_p:{
         id: number;
         name_herbs: string;
         paragraph: string;
         key_points: string;
-        available?: boolean;
+        available: boolean;
     };
 }
-
-
-const { herbs,imagePath } = Astro.props;
+const { herbs_p,imagePath} = Astro.props;
+const available = herbs_p.available ? "Available" : "Out sock"
 ---
-<a 
-    href={`/lunch/${herbs.name_herbs}`}
+    <a 
+    href={`/Product/${herbs_p.name_herbs}`}
     class="rounded-lg border shadow-md bg-yellow-400  border-gray-700
     hover:sacle-105 hover:border-gray-700 hover:border-gray-500 transition flex 
-    flex-col"
->
-    <Image class="md-5 rounded.lg flex justify-center p-4" src={imagePath} alt=`Patch for launch ${herbs.name_herbs}` width={47} height={55}/>
-    <header class="p-4 flex-grow">{herbs.name_herbs}</header>
+    flex-col">
+    <picture class="flex justify-center p-4 md-5 rounded.lg  p-4">
+        <Image src={imagePath} alt=`herbs name ${herbs_p.name_herbs}` width={200} height={200}/>
+    </picture>
+    <header class="p-4 flex-grow">
+        <h2 class="my-2 text-2xl font-blod tracking-tight text-white">
+            {herbs_p.name_herbs}
+        </h2>
+        <span
+        class:list={[
+            'text-xs font-semibold mr-2 px-2.5',
+            {
+                "bg-green-400 text-grenn-900": herbs_p.available,
+                "bg-red-400 text-red-900": !herbs_p.available
+            }
+        ]}
+        >{available}</span>
 
+        <p class="md-4 font-Light text-gray-400">
+            {herbs_p.paragraph!= null && herbs_p.paragraph?. length > 40 ? herbs_p.paragraph.slice(0,100) + "..." : herbs_p.paragraph}
+        </p>
 </a>

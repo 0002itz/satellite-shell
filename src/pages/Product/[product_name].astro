@@ -1,14 +1,16 @@
+---
+// import type { GetStaticPaths } from "astro";
 import Layout from "../../layouts/Layout.astro"
-import { ceremonis } from "../../components/Products.astro"
+import { herbs } from "../../components/Products.astro"
 import { Image } from 'astro:assets';
 
 export const prerender = true;
 import type { InferGetStaticParamsType, InferGetStaticPropsType } from 'astro';
 
 //                    roting dinamico   y        paso de datos
-export async function getStaticPaths() { return herbs.map((herb) => { return { params : { name_herbs: herb.name_herbs}, props: { propa: herb } }; }) } 
+export async function getStaticPaths() { return herbs.map((herb) => { return { params : { product_name: herb.product_name}, props: { propa: herb } }; }) } 
 
-const { name_herbs  } = Astro.params as Params;
+const { product_name  } = Astro.params as Params;
 const { propa } = Astro.props;
 const available = propa.available ? "Available" : "Out sock"
 
@@ -17,7 +19,7 @@ type Props = InferGetStaticPropsType<typeof getStaticPaths>;
 
 ---
 
-<Layout title={name_herbs}>
+<Layout title={product_name}>
     <a
     class="rounded-lg border shadow-md bg-yellow-400  border-gray-700
     hover:sacle-105 hover:border-gray-700 hover:border-gray-500 transition flex 
@@ -25,13 +27,13 @@ type Props = InferGetStaticPropsType<typeof getStaticPaths>;
 
     <article>
         <picture class="grid place-content-center">
-            <Image class="w-52 h-auto" src=`/src/assets/${name_herbs}.png` alt={name_herbs} width={200} height={200}>
+            <Image class="w-52 h-auto" src=`/src/assets/${product_name}.png` alt={product_name} width={200} height={200}>
         </picture>
     </article>
 
     <header class="p-4 flex-grow">
         <h2 class="my-2 text-2xl font-blod tracking-tight text-white">
-            {name_herbs}
+            {product_name}
         </h2>
         <span class:list={['text-xs font-semibold mr-2 px-2.5', { "bg-green-400 text-grenn-900": available, "bg-red-400 text-red-900": !available } ]}>
             {available}

@@ -3,7 +3,7 @@ import { defineDb, defineTable, column  } from 'astro:db';
 const Herbs_db = defineTable({
     columns: {
         id: column.number({ primaryKey: true }),
-        name_herbs: column.text(),
+        product_name: column.text(),
         paragraph: column.text(),
         key_points: column.text(),
         available: column.boolean(),
@@ -13,7 +13,7 @@ const Herbs_db = defineTable({
 const Ceremonis_db = defineTable({
     columns: {
         id: column.number({ primaryKey: true }),
-        name_ceremoni: column.text(),
+        product_name: column.text(),
         paragraph: column.text(),
         key_points: column.text(),
         available: column.boolean(),

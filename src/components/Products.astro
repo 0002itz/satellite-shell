@@ -7,9 +7,9 @@ export const herbs = await db.select().from(Herbs_db)
 export const ceremonis = await db.select().from(Ceremonis_db)
 ---
 <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-  {herbs.map((herbs) => <Cardlauch imagePath=`/src/assets/${herbs.name_herbs}.png` herbs_p={herbs} />)}
+  {herbs.map((herbs) => <Cardlauch imagePath=`/src/assets/${herbs.product_name}.png` product_obj={herbs} />)}
 </div>
-gb n
+
 <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-  {ceremonis.map((ceremonis) => <Cardlauch imagePath=`/src/assets/${ceremonis.name_ceremoni}.png` herbs_p={ceremonis} />)}
+  {ceremonis.map((ceremonis) => <Cardlauch imagePath=`/src/assets/${ceremonis.product_name}.png` product_obj={ceremonis} />)}
 </div>

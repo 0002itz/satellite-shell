@@ -4,7 +4,7 @@ import { Herbs, Ceremonis } from "../../components/Products.astro"
 import { Image } from 'astro:assets';
 export const prerender = true;
 import type { InferGetStaticParamsType, InferGetStaticPropsType,GetStaticPaths  } from 'astro';
-//                    roting dinamico   y        paso de datos
+//    roting dinamico     y        paso de datos
 export const getStaticPaths = (async ()=>{ 
     const posts = [...Herbs,...Ceremonis]
     return posts.map((post) => { 
@@ -14,53 +14,6 @@ export const getStaticPaths = (async ()=>{
         };
     });
 }) satisfies GetStaticPaths;
-
-// export async function getStaticPaths() {
-//     const pages = [
-//         {p_name: Herbs?.product_name, parag:Herbs?.paragraph, key_p:Herbs?.key_points, propa:Herbs?.available},
-//         {p_name: Ceremonis?.product_name, parag:Ceremonis?.paragraph, key_p:Ceremonis?.key_points, propa:Ceremonis?.available},
-//     ];
-//     return pages.map((page) => { 
-//         return { 
-//             params : { p_name: page.p_name?.product_name },
-//             props : { page },
-//         }; 
-//     });
-// }
-
-// export async function getStaticPaths() {
-//     return [
-//         { params: { /* required */ }, props: { /* optional */ } },
-//         { params: { p_name: Herbs.product_name }, props: { page: Herbs } },
-//         { params: { p_name: Ceremonis.product_name }, props: { page: Ceremonis } },
-//     ];
-// }
-
-// export async function getStaticPaths() {
-//     const product_obj = [Herbs,Ceremonis]
-//     return product_obj.flatMap((pro_obj) => { 
-//         return [
-//             { params : { p_name: pro_obj.product_name}, props: { page: pro_obj } },
-//             { params : { p_name: pro_obj.product_name}, props: { page: pro_obj } }
-//         ]; 
-//     }) 
-// }
-
-// const product_obj = [Herbs,Ceremonis]
-// export const GET: APIRoute = ({ params, product_obj }) => {
-//     const p_name = params.p_name;
-//     return new Response(
-//         JSON.stringify({
-//             name: product_obj[p_name]
-//         })
-//     )
-// }
-
-// export function getStaticPaths() {
-//     return [
-//         { params: { p_name: page.product_name}, props : {page:product_obj} },
-//     ]
-// }
 
 type Params = InferGetStaticParamsType<typeof getStaticPaths>;
 type Props = InferGetStaticPropsType<typeof getStaticPaths>;;

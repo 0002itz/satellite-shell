@@ -3,13 +3,14 @@ import Cardlauch from './Cardlauch.astro'
 import { db } from "astro:db"
 import { Herbs_db, Ceremonis_db } from 'astro:db'
 
-export const herbs = await db.select().from(Herbs_db)
-export const ceremonis = await db.select().from(Ceremonis_db)
+export const Herbs = await db.select().from(Herbs_db)
+export const Ceremonis = await db.select().from(Ceremonis_db)
+
 ---
 <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-  {herbs.map((herbs) => <Cardlauch imagePath=`/src/assets/${herbs.product_name}.png` product_obj={herbs} />)}
+  {Herbs.map((Herbs) => <Cardlauch imagePath=`/src/assets/${Herbs.product_name}.png` product_obj={Herbs} />)}
 </div>
 
 <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-  {ceremonis.map((ceremonis) => <Cardlauch imagePath=`/src/assets/${ceremonis.product_name}.png` product_obj={ceremonis} />)}
+  {Ceremonis.map((Ceremonis) => <Cardlauch imagePath=`/src/assets/${Ceremonis.product_name}.png` product_obj={Ceremonis} />)}
 </div>

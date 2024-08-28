@@ -12,7 +12,7 @@ interface Props {
     };
 }
 const { product_obj,imagePath} = Astro.props;
-const available = product_obj.available ? "Available" : "Out sock"
+const available = product_obj.available ? "Available" : "Out of sock"
 ---
     <a 
     href={`/Product/${product_obj.product_name}`}

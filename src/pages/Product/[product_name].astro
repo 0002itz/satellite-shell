@@ -4,7 +4,6 @@ import { Herbs, Ceremonis } from "../../components/Products.astro"
 import { Image } from 'astro:assets';
 export const prerender = true;
 import type { InferGetStaticParamsType, InferGetStaticPropsType,GetStaticPaths  } from 'astro';
-import type { APIRoute } from 'astro'; 
 //                    roting dinamico   y        paso de datos
 export const getStaticPaths = (async ()=>{ 
     const posts = [...Herbs,...Ceremonis]

@@ -1,8 +1,12 @@
 ---
 import Layout from "../layouts/Layout.astro"
 import { Herbs } from "../components/Products.astro"
+import Cardlauch from '../components/Cardlauch.astro'
+
 ---
 
-<Layout title="Arklines">
-    {Herbs}
+<Layout title="Remedios prehispanicos">
+    <div class="p-3 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        {Herbs.map((Herbs) => <Cardlauch imagePath=`/src/assets/${Herbs.product_name}.png` product_obj={Herbs} />)}
+    </div>
 </Layout>

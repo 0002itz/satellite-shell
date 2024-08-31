@@ -46,11 +46,5 @@ export default async function seed() {
             key_points: "Quema todas las sustancias beningnas que el cuerpo gurada en la grasa corporal.",
             available: true ,
         },
-        {
-            product_name: "Ayahusca",
-            paragraph: "La ayahuasca es una ceremonia en la que se acuesta y se busca entrar a un estado de pre-sueño, tiene una duracion de 4 a 5 horas, en la que en cada hora se consume un poco de ayahuasca para poder entrar al estado deseado.",
-            key_points: "Ayuda a desbloquear emociones o recuerdos que nos impiden evolucionar.",
-            available: true ,
-        },
     ]);
 }

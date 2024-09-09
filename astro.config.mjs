@@ -7,6 +7,5 @@ import db from '@astrojs/db';
 export default defineConfig({
   integrations: [tailwind(),db()],
   output: "static",
-  // base:"/app",
   
 });
